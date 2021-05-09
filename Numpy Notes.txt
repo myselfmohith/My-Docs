@@ -1,0 +1,130 @@
+Numpy
+
+np.array() -> list,set,tuple to array
+np.arange(<start>,<end>,<step>) COntinous array
+np.linspace(<start>,<stop>,<numbers>)
+np.empty(<shape>,<dtype>)
+np.zeros(<shape>,<dtype>)
+np.ones(<shape>,<dtype>)
+
+
+<var>.ndim -> Gives the Dimension of the Array
+
+* Axis 0 vertical Axis 1 Horizontal
+* Accesing data from the matrix or Pandas DataFrame
+  [<row-start>:<row-end>,<col-start>:<col-end>]
+    While accesing -ve('-') implies from reverse
+
+<var>.dtype -> Gives Data type of the Array 
+<var>.astype({Convertion text})
+
+* Array act as Vectors so (2,3)*(5,3) => (10,9)
+* When added Additon is done to all rows
+
+
+=> Array manuapulations
+.transpose(arr, axes) or <arr>.T
+.concatenate([<array of arrys>],<axix>) => shape should match and axis 0 is vertical and axis 1 is horizontal
+.stack([<arrs>],<axis>) => appedn the new array if axis 0 and change shape
+      if axis 1 change shape and split array accourding to rows and add them
+
+      a = array([[1,2],[3,4]]) 
+      b = array([[5,6],[7,8]]) 
+
+      stack((a,b),0)
+      array([[[1, 2],
+        [3, 4]],
+
+       [[5, 6],
+        [7, 8]]])
+
+
+      stack((a,b),1)
+        array([[[1, 2],
+        [5, 6]],
+
+       [[3, 4],
+        [7, 8]]])
+
+NOTE: Mention axis else array is flatten
+.insert(<arr>,<pos>,<values>,<axis>)
+.delete(<arr>,<pos>,<axis>)
+.append(<arr>,<values>,<axis>)
+.unique(<arr>)
+.amin(<arr>,<axis>)
+
+These Function canbe resolved as Axis too
+.sum() - Sum 
+.mean() - Mean
+.median() - Median
+.var() - Varience
+.std() - Standerd Deviation
+
+
+
+* Map,filter,reduce functions works on arrays to
+
+Copy vs View
+.copy() Copy - no link to parent variable
+.view() view - link to the parent variable
+.base() give the parent of view
+
+
+<var>.shape -> gives the tuple of integers with shape
+<var>.reshape(<tuple>) -> Not inplace function change the shape of array from row => column
+NOTE: reshape return view
+
+np.nditer(<var>) -> can used to loop to each element.
+np.ndenumerate(<var>) -> can used to loop with index and item (INDEX,ITEM)
+
+np.array_split(<var>,<Number fo arrays>) -> Splits the arrays into the given Number
+
+np.where(<Search Statment we reference complete array>) -> Search for indexes mating the condition and gives an array as outptut
+
+<var>.sort() -> sort the array if 2D or 3D sorts elements in row
+
+*  If we wish to filter the array based on true or false
+   We can use this <var>[<True or false array>]
+
+
+.dot(<m1>,<m2>) -> matrix multiplication
+.vdot(<matrix>) -> Vector Product
+
+
+======== RANDOM ==========
+
+Random means something that can not be predicted logically.
+
+usage => from numpy import random or np.random.<Respective Operations>
+
+.randint(<start>,<end>) => return integer
+.randint(<end>,size=(<tuplle shape>)) => return n-Dimensional Matrix
+
+.rand(<Shape of ND Array>) => Genreate random from 0 to 1
+
+.choice(<Array var>) => Select an element from array only 1D Array
+This also has parameter choice which genrate random ND array(For each martix point choice random element) 
+
+.choice() => also has parameter 'p' which takes the probabity of selecting the item in list
+  ex - x = random.choice([3, 5, 7, 9], p=[0.1, 0.3, 0.6, 0.0], size=(100))
+
+.suffle(<Arr>) => As name suggests suffle the array This INPLACE 
+.permutation(<Arr>) => Gives shuffle array but not INPLACE
+
+
+======== Matrix Library ============
+
+.matlib
+  .empty() -> For empty matrix
+  .ones() -> for all once
+  .zeros() -> for all zeroes
+  .eye(<rows>,<colums>) -> Diagonal ones
+  .identity(<n-rows and cols>) -> Identity Matrix
+  .rand(<shape>)
+  .matrix('String') -> String format <row>;<row>...
+
+
+===== IO operations ===============
+
+.save(<filename>,<arr>) -> save the arry file as npy format
+.load(<file name>) -> load array to file

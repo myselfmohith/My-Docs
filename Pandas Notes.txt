@@ -1,0 +1,41 @@
+Pandas ==============================
+
+[<start>:<end>]
+[<start>:<end>:<step>]
+
+
+.Series(<List>,index=<List for Lables>) => creating Series
+
+> Length of Index list is the length of series
+> It is also like dictnory when accesing via index.
+
+.read_csv('CSV FILE PATH')
+
+.loc[<row-start-name>:<row-end-name>,<col-start-name>:<col-end-name>] - Here last element is Included in loc
+.iloc[<row-start>:<row-end>,<col-start>:<col-end>] - Here last element is Discluded
+
+
+.head(<nrows>) -> first 5 rows
+.tail(<nrows>) -> last 5 rows
+
+.info() -> Gives the outline of your DataFrame such as colname,their non null values,datatypes
+
+.drop([<Row Index>]) -> Remove the Row [NOT INPLACE]
+
+.dropna() -> This function removes the rows containing the Nan or null values [This is not inplace but we can change it to inplace to true]
+    parms
+        | subset -> Only Colums to checked for Nan
+        | inplace -> take effect on same Dtaframe
+
+.fillna() -> If we encounter a Nan it will fill the respective value. [Best Pratice is to fill only the Numeric columns] [This is not inplace but we can change it to inplace to true]
+    Ex -> df[<Column Name>].fillna(130);
+
+NOTE: if we access Elements from data frame we can get acces to function like '.mean() .median() .mode()'
+
+.duplicated() -> gives a series with True if row is Repeated
+.drop_duplicates() -> Drops the duplicated rows.
+
+
+.corr() -> Return dataframe with correlations of Datframe
+
+.replace(<From>,<to>) -> Same works as Replce function
