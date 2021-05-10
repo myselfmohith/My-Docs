@@ -13,12 +13,14 @@ Pandas ==============================
 
 .loc[<row-start-name>:<row-end-name>,<col-start-name>:<col-end-name>] - Here last element is Included in loc
 .iloc[<row-start>:<row-end>,<col-start>:<col-end>] - Here last element is Discluded
+.ix[] - 
 
 
 .head(<nrows>) -> first 5 rows
 .tail(<nrows>) -> last 5 rows
 
 .info() -> Gives the outline of your DataFrame such as colname,their non null values,datatypes
+.describe() -> Gives the Statistical data of the Dataframe or Series
 
 .drop([<Row Index>]) -> Remove the Row [NOT INPLACE]
 
@@ -39,3 +41,63 @@ NOTE: if we access Elements from data frame we can get acces to function like '.
 .corr() -> Return dataframe with correlations of Datframe
 
 .replace(<From>,<to>) -> Same works as Replce function
+
+
+* TO add a column we can use the dictornary tenique
+
+.del(<Column>) -> To delete the column of dataframe
+    (or)
+<dataframe>.pop(<colname>)
+
+.append(<Dataframe>) -> To appedn values to dataframe
+.drop(<row-index>) -> TO delte row from Dtaframe
+
+<s or df>.values -> Return An numpy Array from series or DataFrame
+<s or df>.empty -> Check wheather a series is empty
+
+
+.T -> Tranpose
+.size -> total elements in Seres or Df
+
+.sum(<axis>) -> Sum of Numeric values
+
+=== Statistical Function ===
+count()	Number of non-null observations
+sum()	Sum of values
+mean()	Mean of Values
+median()	Median of Values
+mode()	Mode of values
+std()	Standard Deviation of the Values
+min()	Minimum Value
+max()	Maximum Value
+abs()	Absolute Value
+prod()	Product of Values
+cumsum()	Cumulative Sum return df
+cumprod()	Cumulative Product
+cov() Covarience
+.rank() Gives the rank of item in column
+pct_change() Change of consecutive value percentage in column
+
+
+=== loopping ===
+
+<df>.iterrows() -> Row wise 
+<df>.itertupples() -> Gives a tuple with rowindex at 0th.
+
+
+=== Sorting ===
+parms == ascending -> True or False
+         kind -> which type of sort
+
+<df>.sort_index() -> Sortsthe Datfram,e according to indexes
+    If we give axis 1 it sorts the column names
+
+<df>.sort_values([<colum names>]) -> Sort the column values
+
+
+=== String Operations ===
+<df or seies>.str => Module (return Series)
+
+.contains(<string pattern>) -> return series of True or False
+.count(<pattern>)
+.find(<patter>) -> return series of -1 if not found else its index in string
