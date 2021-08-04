@@ -48,6 +48,7 @@ This is one time look up for creating service worker file for PWA
 const CACHE_NAME = 'site-static-v1';
 const assets = [
     '/',
+    '/index.html'
     // Contains the Cache Pages
     // one offline Page
 ];
