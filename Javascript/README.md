@@ -1,6 +1,7 @@
 ###### NOTE: This contains ***my*** some tricks and shortcuts for Javascript
 ## Contents
 * [Async try await catch - Funtion based](#async-try-await-catch---funtion-based)
+* [Service Worker Code for PWA](#service-worker-code-for-pwa)
 
 
 ---
@@ -33,4 +34,52 @@ async function mytest () {
     const [err2, data] = await resolvePromise(response.json());
     console.log(data) // Contains the Data
 }
+```
+
+
+---
+
+### Service Worker Code for PWA
+This is one time look up for creating service worker file for PWA
+
+```javascript
+
+// version - 1.0
+const CACHE_NAME = 'site-static-v1';
+const assets = [
+    '/',
+    // Contains the Cache Pages
+    // one offline Page
+];
+
+// install event
+self.addEventListener('install', event => {
+    event.waitUntil(
+        caches.open(CACHE_NAME)
+            .then(cache => {
+                cache.addAll(assets);
+            })
+    )
+})
+
+// activate event
+self.addEventListener('activate', event => {
+    event.waitUntil(
+        caches.keys().then(keys => {
+            return Promise.all(keys
+                .filter(key => key!==CACHE_NAME)
+                .map(key => caches.delete(key))
+                );
+        })
+    )
+})
+
+// fetch event
+self.addEventListener('fetch', event => {
+    event.respondWith(
+        caches.match(event.request).then(res => res || fetch(event.request)
+        .catch(() => caches.match("/pages/fallback.html"))
+        )) // Ofline Page Goes Here
+})
+
 ```
