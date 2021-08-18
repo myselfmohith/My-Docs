@@ -100,7 +100,9 @@ usage => from numpy import random or np.random.<Respective Operations>
 .randint(<start>,<end>) => return integer
 .randint(<end>,size=(<tuplle shape>)) => return n-Dimensional Matrix
 
+
 .rand(<Shape of ND Array>) => Genreate random from 0 to 1
+.normal(loc=<mean>,scale=<std>,size=<Shape>) => Normal distribution of array
 
 .choice(<Array var>) => Select an element from array only 1D Array
 This also has parameter choice which genrate random ND array(For each martix point choice random element) 
