@@ -1,4 +1,5 @@
-###### NOTE: This contains ***my*** some tricks and shortcuts for Javascript
+[Go back](./../README.md)
+
 ## Contents
 * [Async try await catch - Funtion based](#async-try-await-catch---funtion-based)
 * [Service Worker Code for PWA](#service-worker-code-for-pwa)
