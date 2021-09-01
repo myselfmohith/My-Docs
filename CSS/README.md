@@ -1,6 +1,6 @@
 ## Contents
 
-<div><h2>Contents</h2><a href="./../README.md"> < back</a></div>
+<div style="display: flex;justify-content:space-between" ><h2>Contents</h2><a href="./../README.md"> < back</a></div>
 
 * [Tik Tok Scroll](#tiktok-scroll)
 
