@@ -14,7 +14,7 @@
 Tiktok scroll is very easy to implement doesn't even need the **javascript**,The CSS feature that enables me to implement is `scroll-snap`
 
 #### Parent
-The parent should not be overflowed and set overflow-<direction> to `scroll`.
+The parent should not be overflowed and set overflow-`y or x` to `scroll`.
 
 |Code|Inputs|Notes|
 |:-|:-|:-|
