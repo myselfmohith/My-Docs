@@ -34,10 +34,6 @@ G = nx.DiGraph() #Directed Graph
 
 |||
 |:-:|:-|
-|`G.add_node((node_name,node_data))`|`node_data` should not be any primitive data type|
-
-|||
-|:-:|:-|
 |`G.add_nodes_from([(node_name,node_data),...])`<br>`G.add_nodes_from([nodes],default_name=default_node_data)`|Here the `default_name` will set to the each node if data is already present before this new will replace it|
 
 ### Assign the values
