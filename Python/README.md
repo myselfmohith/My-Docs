@@ -3,7 +3,30 @@
 ## Contents
 * [Numpy](./Numpy%20Notes.txt)
 * [Pandas](./Pandas%20Notes.txt)
+* [Dump and Load Pickle](#dump-and-load-pickle)
 * [Networkx](#network-x)
+
+---
+
+### Dump and Load Pickle
+
+One line functions for load and dump pickle file
+> NOTE: Make sure to `import pickle`
+
+```python
+def load_pkl(path,pickle_alis=False):
+    pk = pickle_alis if pickle_alis else pickle
+    file = open(path,"br")
+    item = pk.load(file)
+    file.close()
+    return item
+    
+def dump_pkl(item,path,pickle_alis=False):
+    pk = pickle_alis if pickle_alis else pickle
+    file = open(path,"bw")
+    pk.dump(item,file)
+    file.close()
+```
 
 ---
 
