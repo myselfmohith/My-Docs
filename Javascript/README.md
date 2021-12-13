@@ -3,6 +3,7 @@
 ## Contents
 * [Async try await catch - Funtion based](#async-try-await-catch---funtion-based)
 * [Service Worker Code for PWA](#service-worker-code-for-pwa)
+* [IndexedDB](#indexeddb)
 
 
 ---
@@ -84,4 +85,71 @@ self.addEventListener('fetch', event => {
         )) // Ofline Page Goes Here
 })
 
+```
+
+---
+
+### IndexedDB
+Open a data leads to a request.
+|Event|Description|
+|:-|:-|
+|`error`|Error in creating Database |
+|`upgradeneeded`| When version changed,we need to update.We can only add the store to this only in this. |
+|`success`| Data base created and we can use it 
+
+```javascript
+let db = null;
+const request = indexedDB.open('Chatter', 1);
+const request = indexedDB.open('Chatter', 1);
+
+request.addEventListener('error', (err) => console.warn(err));
+request.addEventListener('upgradeneeded', (event) => {
+    db = event.target.result;
+    if (!db.objectStoreNames.contains('users-data')) db.createObjectStore('users-data', {
+        keyPath: 'username'
+    })
+})
+request.addEventListener('success', (event) => {
+    db = event.target.result;
+})
+```
+
+`database.transaction(storename, 'readwrite').objectStore(storename);` this allows to excute the operations of database.
+
+```javascript
+/**
+ * 
+ * @param {IDBDatabase} database 
+ * @param {String} storename - Valid Store Name
+ * @param {Object} payload - ACTION,DATA,KEY
+ * @param {CallableFunction} onSucces 
+ * @param {CallableFunction} onError 
+ * @returns Function Callbacks onSuccess and onError
+ */
+const excuteTransaction = (database, storename, payload, onSuccess, onError) => {
+    const store = database.transaction(storename, 'readwrite').objectStore(storename);
+    let request = null;
+    switch (payload.ACTION) {
+        case 'ADD':
+            request = store.add(payload.DATA);
+            break;
+        case 'DELETE':
+            request = store.delete(payload.KEY);
+            break;
+        case 'UPDATE':
+            request = store.put(payload.KEY, payload.DATA);
+            break;
+        case 'GET':
+            request = store.get(payload.KEY);
+            break;
+        case 'GETALL':
+            request = store.getAll();
+            break;
+        default:
+            onError('PAYLOAD ERROR');
+            return;
+    }
+    request.onsuccess = (event) => onSuccess(event);
+    request.onerror = (error) => onError(error);
+}
 ```
