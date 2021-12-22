@@ -99,14 +99,13 @@ Open a data leads to a request.
 
 ```javascript
 let db = null;
-const request = indexedDB.open('Chatter', 1);
-const request = indexedDB.open('Chatter', 1);
+const request = indexedDB.open('databasename', 1);
 
 request.addEventListener('error', (err) => console.warn(err));
 request.addEventListener('upgradeneeded', (event) => {
     db = event.target.result;
-    if (!db.objectStoreNames.contains('users-data')) db.createObjectStore('users-data', {
-        keyPath: 'username'
+    if (!db.objectStoreNames.contains('storename')) db.createObjectStore('storename', {
+        keyPath: 'store-key-field'
     })
 })
 request.addEventListener('success', (event) => {
@@ -122,11 +121,9 @@ request.addEventListener('success', (event) => {
  * @param {IDBDatabase} database 
  * @param {String} storename - Valid Store Name
  * @param {Object} payload - ACTION,DATA,KEY
- * @param {CallableFunction} onSucces 
- * @param {CallableFunction} onError 
- * @returns Function Callbacks onSuccess and onError
+ * @returns {Promise}
  */
-const excuteTransaction = (database, storename, payload, onSuccess, onError) => {
+const excuteTransaction = (database, storename, payload) => new Promise((resolve, reject) => {
     const store = database.transaction(storename, 'readwrite').objectStore(storename);
     let request = null;
     switch (payload.ACTION) {
@@ -149,7 +146,7 @@ const excuteTransaction = (database, storename, payload, onSuccess, onError) => 
             onError('PAYLOAD ERROR');
             return;
     }
-    request.onsuccess = (event) => onSuccess(event);
-    request.onerror = (error) => onError(error);
-}
+    request.onsuccess = (event) => resolve(event);
+    request.onerror = (error) => reject(error);
+});
 ```
