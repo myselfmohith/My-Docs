@@ -1,12 +1,25 @@
 [Go back](./../README.md)
 
 ## Contents
+* [Node](./node/README.md)
 * [Async try await catch - Funtion based](#async-try-await-catch---funtion-based)
 * [Service Worker Code for PWA](#service-worker-code-for-pwa)
 * [IndexedDB](#indexeddb)
 
 
 ---
+### Promise
+```javascript
+/**
+    * We can build promise ladder by return promise at end of .then function 
+*/
+const promise = new Promise((resolve,reject) => {
+    if(promisedone) resolve(<solved param>);     // reached at .then 
+    else    reject(<error parm>);                // reached at .catch
+})
+```
+we can convert call backs to Promise by enclosing them in a new promise.
+
 
 ### Async try await catch - Funtion based
 This allows me to avoid the callback functions and work as single **Function**.
