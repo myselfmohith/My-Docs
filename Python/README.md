@@ -5,10 +5,11 @@
 * [Pandas](./Pandas%20Notes.txt)
 * [Dump and Load Pickle](#dump-and-load-pickle)
 * [Networkx](#network-x)
+* [OOPS](#oops)
 
 ---
 
-### Dump and Load Pickle
+## Dump and Load Pickle
 
 One line functions for load and dump pickle file
 > NOTE: Make sure to `import pickle`
@@ -30,7 +31,7 @@ def dump_pkl(item,path,pickle_alis=False):
 
 ---
 
-### Network X
+## Network X
 
 We can add any python object(dict,str,list...) to the node of graph even a *graph itself.*
 
@@ -89,4 +90,71 @@ nx.draw_networkx(G,with_labels=True,arrows=True)
 plt.show()
 #YOu can also give node_color=[len(nodes)*<colors>] to represent each node with color
 #                  node_size=[len(nodes)*sizes] to represent diffrent sizes for each node
+```
+
+---
+
+## OOPS
+
+```python
+class ClassName:
+    def __init__(self): # constructor
+        ...
+    
+    def methods(self):
+        ...
+```
+
+List of concepts are
+
+### Encapsulation
+Use the class without knowing how it is build
+```python
+object = ClassName()
+object.methods()
+```
+### Inheritance
+Inherit the parent class. if the child doesn't have a constructor the default constructor is parent one.
+```python
+class Child(Parent):
+    ...
+```
+> we can access parent constructor using **super()**.
+
+### Polymorphism
+Modify the parent class methods 
+```python
+class Parent:
+    ...
+    def parentmethod(self):
+        pass
+
+class Child(Parent):
+    ...
+    def paerntmethod(self):
+        ...
+```
+
+### Abstraction
+Must and should layout build for classes that inherits it 
+```python
+from abc import ABCMeta, abstractmethod
+
+# This class cannot be instantiated
+class BaseClass(metaclass=ABCMeta):
+    
+    #constructor not mandatory
+
+    @abstractmethod
+    def method_name(self):
+        pass
+
+class DerivedClass(BaseClass):
+    def __init__(self):
+        pass
+
+    # Should have the method
+    def method_name(self):
+        ...
+
 ```
