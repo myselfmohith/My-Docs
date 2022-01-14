@@ -48,7 +48,7 @@ G = nx.DiGraph() #Directed Graph
 |:-:|:-|
 |`G.add_node([object])`|Add a Node to the Graph|
 |`G.add_nodes_from(param)`|This method allows us to add multiple nodes at a time to the graph.`@param=list`|
-|`G.add_edge(param)`|Conect the nodes.`@param=tuple *(from,to)*`<br>This command coonect the create node if the inputs are not in the Graph.|
+|`G.add_edge(param)`|Connect the nodes.`@param=tuple *(from,to)*`<br>This command connect the create node if the inputs are not in the Graph.|
 |`G.add_edges_from(param)`|We can pass a list of tuples to connect their nodes.`@param=list(tuple)`|
 |`G.add_weighted_edges_from(param)`|We can connect the edges with the weight values.<br>`G.add_weighted_edges_from([(from,to,[object]),...])`|
 
@@ -61,9 +61,9 @@ G = nx.DiGraph() #Directed Graph
 |`G.add_nodes_from([(node_name,node_data),...])`<br>`G.add_nodes_from([nodes],default_name=default_node_data)`|Here the `default_name` will set to the each node if data is already present before this new will replace it|
 
 ### Assign the values
-We can assign the values for nodes by following the similar process for *dictonary*.
+We can assign the values for nodes by following the similar process for *dictionary*.
 ```python
-for i in G.nodes:   #G.nodes -> returns the Iteratable nodes
+for i in G.nodes:   #G.nodes -> returns the Iterable nodes
     G.nodes[i]['male'] = True
     G.nodes[i]['age'] = np.random.choice(range(10,80))
 ```
@@ -77,8 +77,8 @@ G.edges[from_node,to_node] #returns the edge weight between nodes
 |Method|Description|
 |:-:|:-|
 |`G.degree()`|Returns the degree of the nodes in form a `dict`|
-|`G.adj`|Returns a `dict` with data containting the neighbours of each node and the edge value to it|
-|`G.neighbors(node_name)`|Return the Iterartable Neighbours of the node|
+|`G.adj`|Returns a `dict` with data containing the neighbors of each node and the edge value to it|
+|`G.neighbors(node_name)`|Return the Iterable Neighbors of the node|
 |`G.nodes.data()`|Return the Complete node data of the all nodes in the `dict`|
 
 
