@@ -103,13 +103,14 @@ self.addEventListener('fetch', event => {
 ---
 
 ### IndexedDB
-[Source Tutorial](https://youtube.com/playlist?list=PLyuRouwmQCjmNyAysdqjNz5fIS5cYU4vi)
 Open a data leads to a request.
 |Event|Description|
 |:-|:-|
 |`error`|Error in creating Database |
 |`upgradeneeded`| When version changed,we need to update.We can only add the store to this only in this. |
-|`success`| Data base created and we can use it 
+|`success`| Data base created and we can use it |
+
+[Source Tutorial](https://youtube.com/playlist?list=PLyuRouwmQCjmNyAysdqjNz5fIS5cYU4vi)
 
 ```javascript
 let db = null;
